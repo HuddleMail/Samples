@@ -2,7 +2,7 @@ development:
    adapter: mysql
    database: cookbook
    username: root
-   password: [password]
+   password: Linklo100!!
    host: localhost
 
 test:
