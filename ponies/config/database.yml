@@ -8,7 +8,7 @@ default: &default
   adapter: sqlite3
   pool: 5
   timeout: 5000
-  password: Linklo100!!
+  password:
 
 development:
   <<: *default
