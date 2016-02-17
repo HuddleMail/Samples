@@ -1,1 +1,1 @@
-puts "This is a simple Ruby example";
+p "This is a simple Ruby example";
