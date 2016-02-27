@@ -1,0 +1,6 @@
+<h1>KeyMan #index</h1>
+<p>
+<h1>Distrubtion Group Name</h1>
+<%= select_tag(:Algorithm, '<option value="1">Lisbon</option>...') %>
+
+
