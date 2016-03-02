@@ -1,5 +1,8 @@
 #!/bin/ruby
 
+require 'openpgp'
+require 'mail'
+
 $filename = "encrypted"
 
 def createFile
@@ -15,16 +18,26 @@ def createFile
 end
 
 def encrypt
-  `rm #$filename.gpg`
-  `gpg -e -r "neal friedman" #$filename`
-   puts "The encrypted message:"
-   puts `cat #$filename.gpg` 
+   #text = ARGF.read
+   text = `ARGF.read | gpg --encrypt -r "nealio" | mail -s "encrypted message" nealiof1000@gmail.com`
+   `text | mail -s "unencrypted text" nealiof1000@gmail.com"
+  #`rm #$filename.gpg`
+  #`gpg -e -r "nealio" #$filename`
+   #puts "The encrypted message:"
+   #puts `cat #$filename.gpg` 
+  
 end
 
 def decrypt
   puts `gpg -d #$filename.gpg`
 end
 
-createFile
+def sendMail
+  `mail    
+ 
+end
+
+#createFile
 encrypt
-decrypt
+#decrypt
+
