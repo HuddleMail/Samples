@@ -1,7 +1,7 @@
 class DisGroup < ActiveRecord::Base
 
   def get_dis_name
-	return disname
+	return dname
   end
 
 end

@@ -28,6 +28,7 @@ require 'rubygems'
   # POST /dis_groups.json
   def create
     @dis_group = DisGroup.new(dis_group_params)
+	@dname = @dis_group.disname
 
     respond_to do |format|
       if @dis_group.save
@@ -87,7 +88,7 @@ require 'rubygems'
 		  :key_length    => 1024,
 		  :subkey_type   => 'ELG-E',
 		  :subkey_length => 1024,
-		  :name          => params.find(:disname),
+		  :name          => @dname,
 		  :comment       => nil,
 		  #:email         => '',
 		  #:passphrase    => '',
