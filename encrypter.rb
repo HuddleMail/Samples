@@ -1,16 +1,21 @@
 #!/bin/ruby
 
-require 'openpgp'
-require 'mail'
+## Read in Encrypted Message from STDIN
+incoming = ARGF.read
+puts incoming
 
-def encrypterTest
-  message = ARGF.read
-  encrypted = `echo "#$message" | gpg -e -r "nealio"`
-  `echo "#$encrypted" | mail -s "ENCRYPTED" nealiof1000@gmail.com`
-  decrypted = `echo "#$encrypted" | gpg -d`
-  `echo "#$decrypted" | mail -s "DECRYPTED" nealiof1000@gmail.com`
-end
+`echo "#{incoming}" > output`
 
-encrypterTest
+## Encrypt the message for Recipient
+encrypted = `echo "#{incoming}" | gpg --no-batch -a -e -r "nealio"`
+puts encrypted
 
+## Decrypt the Incoming Group Message
+decrypted = `echo "#{encrypted}" | gpg -a --no-batch -d`
+puts decrypted
 
+## Email Encrypted Message to Recipient
+`echo "#{encrypted}" | mail -s "ENCRYPTED" nealiof1000@gmail.com`
+
+## Email Decrypted copy for testing purposes. DELETE THIS FOR PRODUCTION!!!
+`echo "#{decrypted}" | mail -s "DECRYPTED" nealiof1000@gmail.com`
