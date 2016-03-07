@@ -1,0 +1,20 @@
+puts "Hello. Gonna make a keypair today!"
+
+require "open3"
+
+#cmd = 'gpg --gen-key'#this run the gpg from command line
+cmd1 = 'gpg --armor --export' #this export the public key to terminal
+# name = `gpg -help` #don't worry about this 
+
+Open3.popen3(cmd1) do |stdin, stdout, stderr, wait_thr|
+  while line = stderr.gets
+    puts line
+	
+  end
+  while line = stdout.gets
+	puts line
+	#puts '1'
+  end
+puts 'You reached the end of the ruby program.'
+end
+

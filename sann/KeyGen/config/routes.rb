@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :dis_groups
+  resources :dis_groups do
+    resources :rlist
+  end
   get 'key_man/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
